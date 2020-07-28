@@ -25,13 +25,25 @@
             "problemMatcher": [
                 "$gcc"
             ],
+            "group": "build",
+            "dependsOn": [
+                "create-build-directory"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "run",
+            "command": "${workspaceFolder}/build/hello-world.out",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "dependsOn": [
-                "create-build-directory"
+                "build-project"
             ]
-        },
+        }
     ]
 }
