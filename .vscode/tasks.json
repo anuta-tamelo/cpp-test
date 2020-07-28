@@ -5,13 +5,19 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Build Project",
+            "label": "create-build-directory",
+            "command": "mkdir -p ${workspaceFolder}/build/",
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build-project",
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
                 "${workspaceFolder}/**/*.cpp",
                 "-o",
-                "${workspaceFolder}/build/hello-world.out"
+                "build/hello-world.out"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -22,7 +28,8 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "dependsOn": ["create-build-directory"]
         }
     ]
 }
